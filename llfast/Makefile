@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+NVIDIA_SDK = /usr/local/cuda-9.0/samples
+NVIDIA_LIBS = /usr/local/cuda-9.0/lib64
+NVCC_ARCHES += -gencode arch=compute_52,code=sm_52
+
+CFLAGS = -O3 -Wall
+NVCC_FLAGS =  -use_fast_math $(NVCC_ARCHES) --compiler-options="$(CFLAGS) -fno-strict-aliasing"
+
+all: gpuLucas
+
+gpuLucas.o: gpuLucas.cu IrrBaseBalanced.cu
+	nvcc -c -o $@ gpuLucas.cu -O3 -I$(NVIDIA_SDK)/common/inc $(NVCC_FLAGS) -w
+
+gpuLucas: gpuLucas.o
+	g++ -fPIC $(CFLAGS) -o $@ $^  -Wl,-O1 -Wl,--as-needed -L$(NVIDIA_LIBS) -lcudart -lcufft -lqd
+
+clean:
+	-rm *.o *~
+	-rm gpuLucas
