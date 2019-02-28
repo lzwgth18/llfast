@@ -1,3 +1,7 @@
+/* START PRIME PRIME */
+const int M_A = 1257787;  // set M number , 1257787 means 2^1257787-1
+const int M_B = 65536;  // set signal length
+
 /**
 * gpuLucas.cu
 *
@@ -413,8 +417,8 @@ int main(int argc, char** argv)
 	 */
 //	int testPrime = M_1257787;
 //	int signalSize = 65536;
-	int testPrime = 1257787;
-	int signalSize = 65536;
+	int testPrime = M_A;
+	int signalSize = M_B;
 
 	// BEGIN by initializing constant memory on device
 	initConstantSymbols(testPrime, signalSize);
