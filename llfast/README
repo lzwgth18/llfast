@@ -9,4 +9,4 @@ how to run ?          first make ddqd ,second make llfast.
 
 ubuntu\cuda\g++ needed
 An nvidia gpu after 2012 needed
-Already tested on nvidia tesla m60\tesla v100\geforce gtx 1080 , use cpu Intel Xeon 2686v3\Core i9 7900X.
+Already tested on nvidia tesla m60\tesla v100\geforce gtx 1080 , use cpu Intel Xeon 2686v4\Core i9 7900X.
