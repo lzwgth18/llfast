@@ -1,4 +1,4 @@
-/* START PRIME PRIME */
+/* START PRIME PRIME */ /* An Andrew Thall production (Alma College) */ /* Improved by LiZhongwen */
 
 const int M_A = 1257787;  // set M number , 1257787 means 2^1257787-1
 const int M_B = 65536;  // set signal length
@@ -879,7 +879,7 @@ void mersenneTest(int testPrime, int signalSize) {
 		checkCudaErrors(CUFFT_EXECINVERSE(plan2, (Complex *)z_signal, (Real *)d_signal));
 		getLastCudaError("Kernel execution failed [ CUFFT_EXECINVERSE ]");
 
-		//    Every 1/50th of the way done, do some error testing
+		/*    Every 1/50th of the way done, do some error testing
 		if (iter % (testPrime/50) == 0) {
 			invDWTproductMinus2ERROR<<<numBlocks, T_PER_B>>>(llint_signal, d_signal, dev_Ainv, signalSize);
 			computeErrorVector<<<numBlocks, T_PER_B>>>(dev_errArr, d_signal, signalSize);
@@ -889,7 +889,7 @@ void mersenneTest(int testPrime, int signalSize) {
 		}
 		else
 			invDWTproductMinus2<<<numBlocks, T_PER_B>>>(llint_signal, d_signal, dev_Ainv, signalSize);
-
+                 */
 		// REBALANCE llint TIMING
 		sliceAndDice<<<numBlocks, T_PER_B>>>(i_signalOUT, i_hiBitArr, llint_signal, bitsPerWord8, signalSize);
 
